@@ -1,0 +1,82 @@
+{
+    "name": "aspnet-one-rad-tool-vscode",
+    "displayName": "ASP.NET One Power Tools for vscode",
+    "description": "ASP.NET One Rapid Application Development tooling.",
+    "keywords": [
+        "abp",
+        "asp.net one",
+        "abp one"
+    ],
+    "version": "0.1.0",
+    "publisher": "PMExtra",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "images/icon.png",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PMExtra/aspnet-one-rad-tool-vscode/issues"
+    },
+    "homepage": "https://github.com/PMExtra/aspnet-one-rad-tool-vscode/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PMExtra/aspnet-one-rad-tool-vscode.git"
+    },
+    "activationEvents": [
+        "workspaceContains:**/config.json",
+        "workspaceContains:**/AspNetOneRadTool.dll"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.runRadTool",
+                "title": "Run ASP.NET One Rad Tool"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "when": "resourceExtname == .json && resourceFilename != config.json",
+                    "command": "extension.runRadTool"
+                }
+            ]
+        },
+        "snippets": [
+            {
+                "language": "json",
+                "path": "./snippets/snippet.json"
+            }
+        ]
+    },
+    "scripts": {
+        "build:vsix": "vsce package",
+        "vscode:prepublish": "yarn run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "yarn run compile && node ./node_modules/vscode/bin/test",
+        "lint": "eslint . --ext .js,.ts",
+        "format": "prettier --write **/*.{js,json,ts}"
+    },
+    "devDependencies": {
+        "@types/adm-zip": "^0.4.31",
+        "@types/mocha": "^7.0.1",
+        "@types/node": "^13.7.0",
+        "@typescript-eslint/eslint-plugin": "^2.19.2",
+        "@typescript-eslint/parser": "^2.19.2",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "prettier": "^1.19.1",
+        "typescript": "^3.1.4",
+        "vsce": "^1.66.0",
+        "vscode": "^1.1.36"
+    },
+    "dependencies": {
+        "adm-zip": "^0.4.13"
+    }
+}

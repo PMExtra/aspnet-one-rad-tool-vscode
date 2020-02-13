@@ -1,0 +1,91 @@
+{
+  "abp-one-rad-tool": {
+    "prefix": "one-entity",
+    "body": [
+      "{",
+      "  \"MenuPosition\": \"${1|main,admin|}\",",
+      "  \"RelativeNamespace\": \"${2:EntityName}s\",",
+      "  \"EntityName\": \"${2:EntityName}\",",
+      "  \"EntityNamePlural\": \"${2:EntityName}s\",",
+      "  \"TableName\": \"${2:EntityName}s\",",
+      "  \"PrimaryKeyType\": \"${3|int,long,Guid|}\",",
+      "  \"BaseClass\": \"${4|Entity,AuditedEntity,CreationAuditedEntity,FullAuditedEntity|}\",",
+      "  \"AutoMigration\": ${5|false,true|},",
+      "  \"UpdateDatabase\": ${6|false,true|},",
+      "  \"CreateUserInterface\": ${7|true,false|},",
+      "  \"CreateViewOnly\": ${8|true,false|},",
+      "  \"PagePermission\": {",
+      "    \"Host\": ${9|true,false|},",
+      "    \"Tenant\": ${10|true,false|}",
+      "  },",
+      "  \"Properties\": [",
+      "    $0",
+      "  ],",
+      "  \"NavigationProperties\": [",
+      "    ",
+      "  ],",
+      "  \"EnumDefinitions\": [",
+      "    ",
+      "  ]",
+      "}"
+    ],
+    "description": ""
+  },
+  "Properties": {
+    "prefix": "one-property",
+    "body": [
+      "{",
+      "  \"Name\": \"${1:PropertyName}\",",
+      "  \"Type\": \"${2|string,bool,byte,short,DateTime,decimal,double,Guid,int,long,EnumDefinition|}\",",
+      "  \"MaxLength\":${3:255},",
+      "  \"MinLength\":${4:1},",
+      "  \"Range\": {",
+      "    \"IsRangeSet\": ${5|false,true|},",
+      "    \"MinimumValue\": ${6:0},",
+      "    \"MaximumValue\": ${7:0}",
+      "  },",
+      "  \"Required\": ${8|true,false|},",
+      "  \"Nullable\": ${9|true,false|},",
+      "  \"Regex\": \"\",",
+      "  \"UserInterface\": {",
+      "    \"List\": ${10|true,false|},",
+      "    \"AdvancedFilter\": ${11|true,false|},",
+      "    \"CreateOrUpdate\": ${12|true,false|}",
+      "  }",
+      "}$0"
+    ],
+    "description": ""
+  },
+  "NavigationProperties": {
+    "prefix": "one-nav-property",
+    "body": [
+      "{",
+      "  \"Namespace\": \"${1:NavigationPropertyNamespace}\",",
+      "  \"ForeignEntityName\": \"${2:ForeignEntityName}\",",
+      "  \"IdType\": \"${3|int,long,Guid|}\",",
+      "  \"IsNullable\": ${4|true,false|},",
+      "  \"PropertyName\": \"${5:PropertyName}\",",
+      "  \"DisplayPropertyName\": \"${6:DisplayPropertyName}\",",
+      "  \"DuplicationNumber\": 0,",
+      "  \"RelationType\": \"single\"",
+      "}$0"
+    ],
+    "description": ""
+  },
+  "EnumDefinitions": {
+    "prefix": "one-enum-def",
+    "body": [
+      "{",
+      "  \"Namespace\": \"${1:EnumNamespace}\",",
+      "  \"Name\": \"${2:EnumName}\",",
+      "  \"EnumProperties\": [",
+      "    {",
+      "      \"Name\": \"${3:EnumPropertyName}\",",
+      "      \"Value\": 1",
+      "    }",
+      "  ]",
+      "}$0"
+    ],
+    "description": ""
+  }
+}
