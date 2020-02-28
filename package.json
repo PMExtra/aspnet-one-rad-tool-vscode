@@ -31,24 +31,27 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [
-            {
-                "command": "extension.runRadTool",
-                "title": "Run ASP.NET One Rad Tool"
-            }
-        ],
+        "commands": [{
+            "command": "extension.runRadTool",
+            "title": "Run ASP.NET One Rad Tool"
+        }],
         "menus": {
-            "explorer/context": [
-                {
-                    "when": "resourceExtname == .json && resourceFilename != config.json",
-                    "command": "extension.runRadTool"
-                }
-            ]
+            "explorer/context": [{
+                "when": "resourceExtname == .json && resourceFilename != config.json",
+                "command": "extension.runRadTool"
+            }]
         },
-        "snippets": [
+        "snippets": [{
+            "language": "json",
+            "path": "./snippets/snippet.json"
+        }],
+        "jsonValidation": [{
+                "fileMatch": "AspNetOneRadTool/config.json",
+                "url": "./schemas/aspnetone-rad-config.schema.json"
+            },
             {
-                "language": "json",
-                "path": "./snippets/snippet.json"
+                "fileMatch": "AspNetOneRadTool/*.json",
+                "url": "./schemas/aspnetone-rad-entity.schema.json"
             }
         ]
     },

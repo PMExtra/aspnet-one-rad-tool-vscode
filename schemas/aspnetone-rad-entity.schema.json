@@ -1,0 +1,442 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://schema.aspnet.one/rad.entity.schema.json",
+  "type": "object",
+  "title": "The entity definition of AspNetOne RAD Tool",
+  "required": [
+    "MenuPosition",
+    "RelativeNamespace",
+    "EntityName",
+    "EntityNamePlural",
+    "TableName",
+    "PrimaryKeyType",
+    "BaseClass",
+    "AutoMigration",
+    "UpdateDatabase",
+    "CreateUserInterface",
+    "CreateViewOnly",
+    "CreateLookupTable",
+    "PagePermission",
+    "Properties",
+    "NavigationProperties",
+    "EnumDefinitions"
+  ],
+  "properties": {
+    "MenuPosition": {
+      "$id": "#/properties/MenuPosition",
+      "type": "string",
+      "title": "Menu position (Angular module)",
+      "default": "",
+      "examples": [
+        "main",
+        "admin"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "RelativeNamespace": {
+      "$id": "#/properties/RelativeNamespace",
+      "type": "string",
+      "title": "The namespace relative to project",
+      "default": "",
+      "pattern": "^(.*)$"
+    },
+    "EntityName": {
+      "$id": "#/properties/EntityName",
+      "type": "string",
+      "title": "The entity name",
+      "default": "",
+      "pattern": "^(.*)$"
+    },
+    "EntityNamePlural": {
+      "$id": "#/properties/EntityNamePlural",
+      "type": "string",
+      "title": "The entity name (plural)",
+      "default": "",
+      "pattern": "^(.*)$"
+    },
+    "TableName": {
+      "$id": "#/properties/TableName",
+      "type": "string",
+      "title": "The table name",
+      "default": "",
+      "pattern": "^(.*)$"
+    },
+    "PrimaryKeyType": {
+      "$id": "#/properties/PrimaryKeyType",
+      "type": "string",
+      "title": "The primary key type",
+      "default": "",
+      "examples": [
+        "int",
+        "long",
+        "Guid",
+        "string"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "BaseClass": {
+      "$id": "#/properties/BaseClass",
+      "type": "string",
+      "title": "The base class",
+      "default": "",
+      "examples": [
+        "Entity",
+        "AuditedEntity",
+        "FullAuditedEntity"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "AutoMigration": {
+      "$id": "#/properties/AutoMigration",
+      "type": "boolean",
+      "title": "Add migration",
+      "default": false
+    },
+    "UpdateDatabase": {
+      "$id": "#/properties/UpdateDatabase",
+      "type": "boolean",
+      "title": "Update database",
+      "default": false
+    },
+    "CreateUserInterface": {
+      "$id": "#/properties/CreateUserInterface",
+      "type": "boolean",
+      "title": "Create user interface",
+      "default": false
+    },
+    "CreateViewOnly": {
+      "$id": "#/properties/CreateViewOnly",
+      "type": "boolean",
+      "title": "Create view-only modal",
+      "default": false
+    },
+    "CreateLookupTable": {
+      "$id": "#/properties/CreateLookupTable",
+      "type": "boolean",
+      "title": "Create lookup table",
+      "default": false
+    },
+    "PagePermission": {
+      "$id": "#/properties/PagePermission",
+      "type": "object",
+      "title": "The page permission",
+      "default": null,
+      "required": [
+        "Host",
+        "Tenant"
+      ],
+      "properties": {
+        "Host": {
+          "$id": "#/properties/PagePermission/properties/Host",
+          "type": "boolean",
+          "title": "Host",
+          "default": false
+        },
+        "Tenant": {
+          "$id": "#/properties/PagePermission/properties/Tenant",
+          "type": "boolean",
+          "title": "Tenant",
+          "default": false
+        }
+      }
+    },
+    "Properties": {
+      "$id": "#/properties/Properties",
+      "type": "array",
+      "title": "The Properties",
+      "default": null,
+      "items": {
+        "$id": "#/properties/Properties/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "Name",
+          "Type",
+          "Required",
+          "UserInterface"
+        ],
+        "properties": {
+          "Name": {
+            "$id": "#/properties/Properties/items/properties/Name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "Name"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "Type": {
+            "$id": "#/properties/Properties/items/properties/Type",
+            "type": "string",
+            "title": "The Type Schema",
+            "default": "",
+            "examples": [
+              "string"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "MaxLength": {
+            "$id": "#/properties/Properties/items/properties/MaxLength",
+            "type": ["integer", "null"],
+            "title": "The Maxlength Schema",
+            "default": 0,
+            "examples": [
+              32
+            ]
+          },
+          "MinLength": {
+            "$id": "#/properties/Properties/items/properties/MinLength",
+            "type": ["integer", "null"],
+            "title": "The Minlength Schema",
+            "default": 0,
+            "examples": [
+              2
+            ]
+          },
+          "Required": {
+            "$id": "#/properties/Properties/items/properties/Required",
+            "type": "boolean",
+            "title": "The Required Schema",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "Regex": {
+            "$id": "#/properties/Properties/items/properties/Regex",
+            "type": "string",
+            "title": "The Regex Schema",
+            "default": "",
+            "examples": [
+              ""
+            ],
+            "pattern": "^(.*)$"
+          },
+          "UserInterface": {
+            "$id": "#/properties/Properties/items/properties/UserInterface",
+            "type": "object",
+            "title": "The Userinterface Schema",
+            "required": [
+              "List",
+              "AdvancedFilter",
+              "CreateOrUpdate",
+              "ShowInLookup"
+            ],
+            "properties": {
+              "List": {
+                "$id": "#/properties/Properties/items/properties/UserInterface/properties/List",
+                "type": "boolean",
+                "title": "The List Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "AdvancedFilter": {
+                "$id": "#/properties/Properties/items/properties/UserInterface/properties/AdvancedFilter",
+                "type": "boolean",
+                "title": "The Advancedfilter Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "CreateOrUpdate": {
+                "$id": "#/properties/Properties/items/properties/UserInterface/properties/CreateOrUpdate",
+                "type": "boolean",
+                "title": "The Createorupdate Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "ShowInLookup": {
+                "$id": "#/properties/Properties/items/properties/UserInterface/properties/ShowInLookup",
+                "type": "boolean",
+                "title": "The Showinlookup Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "NavigationProperties": {
+      "$id": "#/properties/NavigationProperties",
+      "type": "array",
+      "title": "The Navigationproperties Schema",
+      "items": {
+        "$id": "#/properties/NavigationProperties/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "Namespace",
+          "ForeignEntityName",
+          "IdType",
+          "IsNullable",
+          "ObjectName",
+          "PropertyName",
+          "DisplayPropertyName",
+          "RelationType"
+        ],
+        "properties": {
+          "Namespace": {
+            "$id": "#/properties/NavigationProperties/items/properties/Namespace",
+            "type": "string",
+            "title": "The Namespace Schema",
+            "default": "",
+            "examples": [
+              "Abp.Organizations"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "ForeignEntityName": {
+            "$id": "#/properties/NavigationProperties/items/properties/ForeignEntityName",
+            "type": "string",
+            "title": "The Foreignentityname Schema",
+            "default": "",
+            "examples": [
+              "OrganizationUnit"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "IdType": {
+            "$id": "#/properties/NavigationProperties/items/properties/IdType",
+            "type": "string",
+            "title": "The Idtype Schema",
+            "default": "",
+            "examples": [
+              "int"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "IsNullable": {
+            "$id": "#/properties/NavigationProperties/items/properties/IsNullable",
+            "type": "boolean",
+            "title": "The Isnullable Schema",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "ObjectName": {
+            "$id": "#/properties/NavigationProperties/items/properties/ObjectName",
+            "type": "string",
+            "title": "The Objectname Schema",
+            "default": "",
+            "examples": [
+              "OrganizationUnit"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "PropertyName": {
+            "$id": "#/properties/NavigationProperties/items/properties/PropertyName",
+            "type": "string",
+            "title": "The Propertyname Schema",
+            "default": "",
+            "examples": [
+              "OrganizationUnitId"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "DisplayPropertyName": {
+            "$id": "#/properties/NavigationProperties/items/properties/DisplayPropertyName",
+            "type": "string",
+            "title": "The Displaypropertyname Schema",
+            "default": "",
+            "examples": [
+              "Name"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "RelationType": {
+            "$id": "#/properties/NavigationProperties/items/properties/RelationType",
+            "type": "string",
+            "title": "The Relationtype Schema",
+            "default": "",
+            "examples": [
+              "single"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    },
+    "EnumDefinitions": {
+      "$id": "#/properties/EnumDefinitions",
+      "type": "array",
+      "title": "The Enumdefinitions Schema",
+      "items": {
+        "$id": "#/properties/EnumDefinitions/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "Namespace",
+          "Name",
+          "EnumProperties"
+        ],
+        "properties": {
+          "Namespace": {
+            "$id": "#/properties/EnumDefinitions/items/properties/Namespace",
+            "type": "string",
+            "title": "The Namespace Schema",
+            "default": "",
+            "examples": [
+              "Namespace.To.Enums"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "Name": {
+            "$id": "#/properties/EnumDefinitions/items/properties/Name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "SomeEnum"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "EnumProperties": {
+            "$id": "#/properties/EnumDefinitions/items/properties/EnumProperties",
+            "type": "array",
+            "title": "The Enumproperties Schema",
+            "items": {
+              "$id": "#/properties/EnumDefinitions/items/properties/EnumProperties/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": [
+                "Name",
+                "Value"
+              ],
+              "properties": {
+                "Name": {
+                  "$id": "#/properties/EnumDefinitions/items/properties/EnumProperties/items/properties/Name",
+                  "type": "string",
+                  "title": "The Name Schema",
+                  "default": "",
+                  "examples": [
+                    "Option1"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "Value": {
+                  "$id": "#/properties/EnumDefinitions/items/properties/EnumProperties/items/properties/Value",
+                  "type": "integer",
+                  "title": "The Value Schema",
+                  "default": 0,
+                  "examples": [
+                    1
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

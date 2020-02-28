@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import * as path from "path";
+import * as os from "os";
 import { spawn } from "child_process";
 import * as AdmZip from "adm-zip";
 
@@ -21,17 +22,21 @@ export function activate(context: vscode.ExtensionContext): void {
       const zip = new AdmZip(
         path.join(__dirname, "..", "resources/AspNetOneRadTool.zip")
       );
-      zip.extractAllTo(
-        /*target path*/ path.dirname(uri.fsPath),
-        /*overwrite*/ true
-      );
+
+      const tmpDir = os.tmpdir();
+
+      zip.extractAllTo(tmpDir, true);
 
       // run rad tool
-      const process = spawn(
-        "dotnet.exe",
-        ["AspNetOneRadTool.dll", path.basename(uri.fsPath)],
-        { cwd: path.dirname(uri.fsPath), shell: true }
+      const exePath = path.join(
+        tmpDir,
+        "AspNetOneRadTool",
+        "AspNetOneRadTool.exe"
       );
+      const process = spawn(exePath, [path.basename(uri.fsPath)], {
+        cwd: path.dirname(uri.fsPath),
+        shell: true
+      });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       function printOutput(data: any): void {
         commandOutput.append(data.toString());

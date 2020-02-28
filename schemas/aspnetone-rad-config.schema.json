@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://schema.aspnet.one/rad.config.schema.json",
+  "type": "object",
+  "title": "The config of AspNetOne RAD Tool",
+  "required": [
+    "CompanyName",
+    "ProjectName",
+    "ProjectVersion",
+    "AngularSrcPath",
+    "CoreSrcPath",
+    "FileLocations"
+  ],
+  "properties": {
+    "CompanyName": {
+      "$id": "#/properties/CompanyName",
+      "type": "string",
+      "title": "The company name",
+      "examples": [
+        "MyCompanyName"
+      ],
+      "pattern": "^[_A-Za-z][_A-Za-z0-9]*$"
+    },
+    "ProjectName": {
+      "$id": "#/properties/ProjectName",
+      "type": "string",
+      "title": "The project name",
+      "examples": [
+        "AspNetOneProject"
+      ],
+      "pattern": "^[_A-Za-z][_A-Za-z0-9]*$"
+    },
+    "ProjectVersion": {
+      "$id": "#/properties/ProjectVersion",
+      "type": "string",
+      "title": "The project version",
+      "examples": [
+        "v8.1.0"
+      ],
+      "pattern": "^v\\d+\\.\\d+\\.\\d+$"
+    },
+    "LicenseCode": {
+      "$id": "#/properties/LicenseCode",
+      "type": "string",
+      "title": "The license code",
+      "examples": [
+        "LicenseCodePlaceHolderToReplace"
+      ],
+      "pattern": "^[A-Za-z0-9+/=]*$"
+    },
+    "AngularSrcPath": {
+      "$id": "#/properties/AngularSrcPath",
+      "type": "string",
+      "title": "The Angular source path",
+      "examples": [
+        "\\..\\..\\angular\\src\\"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "CoreSrcPath": {
+      "$id": "#/properties/CoreSrcPath",
+      "type": "string",
+      "title": "The AspNet Core source path",
+      "examples": [
+        "\\..\\src\\"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "FileLocations": {
+      "$id": "#/properties/FileLocations",
+      "type": "object",
+      "title": "The file locations",
+      "required": [
+        "DbContext",
+        "CustomDtoMapper",
+        "AppAuthorizationProvider",
+        "EntityHistoryHelper",
+        "AppPermissions",
+        "LocalizationFile",
+        "EntityFrameWorkProjectFolder",
+        "Angular"
+      ],
+      "properties": {
+        "DbContext": {
+          "$id": "#/properties/FileLocations/properties/DbContext",
+          "type": "string",
+          "title": "The Dbcontext file path (based CoreSrcPath)",
+          "examples": [
+            "{{Namespace_Here}}.EntityFrameworkCore\\EntityFrameworkCore\\{{Project_Name_Here}}DbContext.cs"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "CustomDtoMapper": {
+          "$id": "#/properties/FileLocations/properties/CustomDtoMapper",
+          "type": "string",
+          "title": "The CustomDtoMapper file path (based CoreSrcPath)",
+          "examples": [
+            "{{Namespace_Here}}.Application\\CustomDtoMapper.cs"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "AppAuthorizationProvider": {
+          "$id": "#/properties/FileLocations/properties/AppAuthorizationProvider",
+          "type": "string",
+          "title": "The AppAuthorizationProvider file path (based CoreSrcPath)",
+          "examples": [
+            "{{Namespace_Here}}.Core\\Authorization\\AppAuthorizationProvider.cs"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "EntityHistoryHelper": {
+          "$id": "#/properties/FileLocations/properties/EntityHistoryHelper",
+          "type": "string",
+          "title": "The EntityHistoryHelper file path (based CoreSrcPath)",
+          "examples": [
+            "{{Namespace_Here}}.Core\\EntityHistory\\EntityHistoryHelper.cs"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "AppPermissions": {
+          "$id": "#/properties/FileLocations/properties/AppPermissions",
+          "type": "string",
+          "title": "The AppPermissions file path (based CoreSrcPath)",
+          "examples": [
+            "{{Namespace_Here}}.Core\\Authorization\\AppPermissions.cs"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "LocalizationFile": {
+          "$id": "#/properties/FileLocations/properties/LocalizationFile",
+          "type": "string",
+          "title": "The Localization file path (based CoreSrcPath)",
+          "examples": [
+            "{{Namespace_Here}}.Core\\Localization\\{{Project_Name_Here}}\\{{Project_Name_Here}}.xml"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "EntityFrameWorkProjectFolder": {
+          "$id": "#/properties/FileLocations/properties/EntityFrameWorkProjectFolder",
+          "type": "string",
+          "title": "The EntityFramework project folder path (based CoreSrcPath)",
+          "default": "",
+          "examples": [
+            "{{Namespace_Here}}.EntityFrameworkCore"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "Angular": {
+          "$id": "#/properties/FileLocations/properties/Angular",
+          "type": "object",
+          "title": "The Angular locations",
+          "required": [
+            "AppNavigationService",
+            "ServiceProxies",
+            "Module",
+            "RoutingModule"
+          ],
+          "properties": {
+            "AppNavigationService": {
+              "$id": "#/properties/FileLocations/properties/Angular/properties/AppNavigationService",
+              "type": "string",
+              "title": "The AppNavigation service file path (based AngularSrcPath)",
+              "default": "",
+              "examples": [
+                "app\\shared\\layout\\nav\\app-navigation.service.ts"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "ServiceProxies": {
+              "$id": "#/properties/FileLocations/properties/Angular/properties/ServiceProxies",
+              "type": "string",
+              "title": "The ServiceProxies module file path (based AngularSrcPath)",
+              "default": "",
+              "examples": [
+                "shared\\service-proxies\\service-proxy.module.ts"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Module": {
+              "$id": "#/properties/FileLocations/properties/Angular/properties/Module",
+              "type": "string",
+              "title": "The module file path pattern (based AngularSrcPath)",
+              "default": "",
+              "examples": [
+                "app\\{{menu_Position_Here}}\\{{menu_Position_Here}}.module.ts"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "RoutingModule": {
+              "$id": "#/properties/FileLocations/properties/Angular/properties/RoutingModule",
+              "type": "string",
+              "title": "The Routing module file path pattern (based AngularSrcPath)",
+              "default": "",
+              "examples": [
+                "app\\{{menu_Position_Here}}\\{{menu_Position_Here}}-routing.module.ts"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        }
+      }
+    }
+  }
+}
